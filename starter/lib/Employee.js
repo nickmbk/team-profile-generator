@@ -7,4 +7,20 @@ class Employee {
         this.role = getRole();  //returns Employee
     }
 
+    // getName() {
+
+    // }
+
+    // getId() {
+
+    // }
+
+    // getEmail() {
+
+    // }
+
+    // getRole() {
+
+    // }
+
 }
