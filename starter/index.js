@@ -65,7 +65,8 @@ function addMenu() {
                     addIntern();
                     break;
                 case 'Finish building the team' :
-                    render(team);
+                    fs.writeFile(outputPath, render(team), (err) =>
+                    err ? console.error(err) : console.log('Success!'));
                     break;
             }
         })
@@ -133,11 +134,8 @@ function addIntern() {
         })
 }
 
-// function buildTeam(finished, ...infoArray) {
-//     if (!finished) {
-//         const completeTeam = [...completeTeam, ...infoArray];
-//     } else if (finished) {
-//         // render(completeTeam);
-//         console.log(completeTeam);
-//     }
-// }
+function init() {
+    createManager();
+}
+
+init();
