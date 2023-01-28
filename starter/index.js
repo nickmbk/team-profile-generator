@@ -39,6 +39,7 @@ function createManager() {
         ])
         .then((managerAnswers) => {
             buildTeam(managerAnswers);
+            addMenu();
         })
 } 
 
@@ -93,24 +94,41 @@ function addEngineer() {
         ])
         .then((engineerAnswers) => {
             buildTeam(engineerAnswers);
+            addMenu();
         })
 }
 
-
-
-// When a user selects the engineer option then a user is prompted to enter the following and then the user is taken back to the menu:
-// Engineer's Name
-// ID
-// Email
-// GitHub username
-// When a user selects the intern option then a user is prompted to enter the following and then the user is taken back to the menu:
-// Intern’s name
-// ID
-// Email
-// School
-// When a user decides to finish building their team then they exit the application, and the HTML is generated.
-
+function addIntern() {
+    inquirer
+        .prompt([
+            {
+                type: 'input',
+                message: 'What is the Intern\'s name: ',
+                name: 'internsName'
+            },
+            {
+                type: 'input',
+                message: 'What is the Intern\'s ID: ',
+                name: 'internsId'
+            },
+            {
+                type: 'input',
+                message: 'What is the Intern\'s email address: ',
+                name: 'internsEmail'
+            },
+            {
+                type: 'input',
+                message: 'What School does the Intern go to: ',
+                name: 'internsSchool'
+            }
+        ])
+        .then((internAnswers) => {
+            buildTeam(internAnswers);
+            addMenu();
+        })
+}
 
 function buildTeam(infoArray) {
     const completeTeam = [...completeTeam, ...infoArray];
 }
+
