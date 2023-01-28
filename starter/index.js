@@ -9,7 +9,7 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./src/page-template.js");
-
+const { finished } = require("stream");
 
 // TODO: Write Code to gather information about the development team members, and render the HTML file.
 
@@ -37,23 +37,67 @@ function createManager() {
                 name: 'managersOfficeNo'
             }
         ])
-        .then((answers) => {
-            
+        .then((managerAnswers) => {
+            buildTeam(managerAnswers);
         })
 } 
 
+function addMenu() {
+    inquirer
+        .prompt([
+            {
+                type: 'list',
+                message: 'Would you like to: ',
+                name: 'menuChoice',
+                choices: ['Add an engineer', 'Add an intern', 'Finish building the team']
+            }
+        ])
+        .then((menuAnswer) => {
+            switch (menuAnswer.menuChoice) {
+                case 'Add an engineer' :
+                    addEngineer();
+                    break;
+                case 'Add an intern' :
+                    addIntern();
+                    break;
+                case 'Finish building the team' :
+                    finished();
+                    break;
+            }
+        })
+}
+
+function addEngineer() {
+    inquirer
+        .prompt([
+            {
+                type: 'input',
+                message: 'What is the Engineer\'s name: ',
+                name: 'engineersName'
+            },
+            {
+                type: 'input',
+                message: 'What is the engineer\'s ID: ',
+                name: 'engineersId'
+            },
+            {
+                type: 'input',
+                message: 'What is the engineer\'s email address: ',
+                name: 'engineersEmail'
+            },
+            {
+                type: 'input',
+                message: 'What is the engineer\'s GitHub username: ',
+                name: 'engineersGithub'
+            }
+        ])
+        .then((engineerAnswers) => {
+            buildTeam(engineerAnswers);
+        })
+}
 
 
 
-// When a user starts the application then they are prompted to enter the team manager’s:
-// Name
-// Employee ID
-// Email address
-// Office number
-// When a user enters those requirements then the user is presented with a menu with the option to:
-// Add an engineer
-// Add an intern
-// Finish building the team
 // When a user selects the engineer option then a user is prompted to enter the following and then the user is taken back to the menu:
 // Engineer's Name
 // ID
@@ -65,3 +109,8 @@ function createManager() {
 // Email
 // School
 // When a user decides to finish building their team then they exit the application, and the HTML is generated.
+
+
+function buildTeam(infoArray) {
+    const completeTeam = [...completeTeam, ...infoArray];
+}
