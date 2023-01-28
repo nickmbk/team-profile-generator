@@ -11,6 +11,8 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 const render = require("./src/page-template.js");
 const { finished } = require("stream");
 
+const team = [];
+
 // TODO: Write Code to gather information about the development team members, and render the HTML file.
 
 function createManager() {
@@ -19,26 +21,27 @@ function createManager() {
             {
                 type: 'input',
                 message: 'Please enter the Team Manager\'s name: ',
-                name: 'managersName'
+                name: 'mame'
             },
             {
                 type: 'input',
                 message: 'Please enter the Manager\'s ID: ',
-                name: 'managersId'
+                name: 'id'
             },
             {
                 type: 'input',
                 message: 'Please enter the Manager\'s email address: ',
-                name: 'managersEmail'
+                name: 'email'
             },
             {
                 type: 'input',
                 message: 'Please enter the Manager\'s Office number: ',
-                name: 'managersOfficeNo'
+                name: 'officeNo'
             }
         ])
         .then((managerAnswers) => {
-            buildTeam(managerAnswers);
+            const manager = Manager(managerAnswers.name, managerAnswers.id, managerAnswers.email, managerAnswers.officeNo);
+            team.push(manager);
             addMenu();
         })
 } 
@@ -62,7 +65,7 @@ function addMenu() {
                     addIntern();
                     break;
                 case 'Finish building the team' :
-                    finished();
+                    render(team);
                     break;
             }
         })
@@ -74,26 +77,27 @@ function addEngineer() {
             {
                 type: 'input',
                 message: 'What is the Engineer\'s name: ',
-                name: 'engineersName'
+                name: 'name'
             },
             {
                 type: 'input',
                 message: 'What is the engineer\'s ID: ',
-                name: 'engineersId'
+                name: 'id'
             },
             {
                 type: 'input',
                 message: 'What is the engineer\'s email address: ',
-                name: 'engineersEmail'
+                name: 'email'
             },
             {
                 type: 'input',
                 message: 'What is the engineer\'s GitHub username: ',
-                name: 'engineersGithub'
+                name: 'github'
             }
         ])
         .then((engineerAnswers) => {
-            buildTeam(engineerAnswers);
+            const engineer = Engineer(engineerAnswers.name, engineerAnswers.id, engineerAnswers.email, engineerAnswers.github);
+            team.push(engineer);
             addMenu();
         })
 }
@@ -123,12 +127,17 @@ function addIntern() {
             }
         ])
         .then((internAnswers) => {
-            buildTeam(internAnswers);
+            const intern = Engineer(internAnswers.name, internAnswers.id, internAnswers.email, internAnswers.email);
+            team.push(intern);
             addMenu();
         })
 }
 
-function buildTeam(infoArray) {
-    const completeTeam = [...completeTeam, ...infoArray];
-}
-
+// function buildTeam(finished, ...infoArray) {
+//     if (!finished) {
+//         const completeTeam = [...completeTeam, ...infoArray];
+//     } else if (finished) {
+//         // render(completeTeam);
+//         console.log(completeTeam);
+//     }
+// }
