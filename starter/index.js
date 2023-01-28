@@ -40,7 +40,7 @@ function createManager() {
             }
         ])
         .then((managerAnswers) => {
-            const manager = Manager(managerAnswers.name, managerAnswers.id, managerAnswers.email, managerAnswers.officeNo);
+            const manager = new Manager(managerAnswers.name, managerAnswers.id, managerAnswers.email, managerAnswers.officeNo);
             team.push(manager);
             addMenu();
         })
@@ -96,7 +96,7 @@ function addEngineer() {
             }
         ])
         .then((engineerAnswers) => {
-            const engineer = Engineer(engineerAnswers.name, engineerAnswers.id, engineerAnswers.email, engineerAnswers.github);
+            const engineer = new Engineer(engineerAnswers.name, engineerAnswers.id, engineerAnswers.email, engineerAnswers.github);
             team.push(engineer);
             addMenu();
         })
@@ -127,7 +127,7 @@ function addIntern() {
             }
         ])
         .then((internAnswers) => {
-            const intern = Engineer(internAnswers.name, internAnswers.id, internAnswers.email, internAnswers.email);
+            const intern = new Intern(internAnswers.name, internAnswers.id, internAnswers.email, internAnswers.email);
             team.push(intern);
             addMenu();
         })
