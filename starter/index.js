@@ -21,7 +21,7 @@ function createManager() {
             {
                 type: 'input',
                 message: 'Please enter the Team Manager\'s name: ',
-                name: 'mame'
+                name: 'name'
             },
             {
                 type: 'input',
@@ -109,26 +109,26 @@ function addIntern() {
             {
                 type: 'input',
                 message: 'What is the Intern\'s name: ',
-                name: 'internsName'
+                name: 'name'
             },
             {
                 type: 'input',
                 message: 'What is the Intern\'s ID: ',
-                name: 'internsId'
+                name: 'id'
             },
             {
                 type: 'input',
                 message: 'What is the Intern\'s email address: ',
-                name: 'internsEmail'
+                name: 'email'
             },
             {
                 type: 'input',
                 message: 'What School does the Intern go to: ',
-                name: 'internsSchool'
+                name: 'school'
             }
         ])
         .then((internAnswers) => {
-            const intern = new Intern(internAnswers.name, internAnswers.id, internAnswers.email, internAnswers.email);
+            const intern = new Intern(internAnswers.name, internAnswers.id, internAnswers.email, internAnswers.school);
             team.push(intern);
             addMenu();
         })
