@@ -65,6 +65,7 @@ function addMenu() {
                     addIntern();
                     break;
                 case 'Finish building the team' :
+                    console.log(team);
                     fs.writeFile(outputPath, render(team), (err) =>
                     err ? console.error(err) : console.log('Success!'));
                     break;
