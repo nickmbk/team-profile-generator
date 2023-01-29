@@ -22,10 +22,16 @@
     transform: scale(1.1);
     transition: 1s ease-in;
     z-index: 10;
+    box-shadow: 2px 2px 10px 1px #4b4a4a;
 }
 
 .team-area .employee-card {
     transform: scale(1);
     transition: 1s ease-out;
     z-index: 0;
+    box-shadow: 1px 1px 4px #000000;
+}
+
+.card-div {
+    
 }
