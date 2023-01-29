@@ -1,0 +1,31 @@
+.heading .jumbotron {
+    background-color: #ec6313;
+    color: #ffffff;
+}
+
+.card-div .manager {
+    background-color: #229933;
+    color: #ffffff;
+}
+
+.card-div .engineer {
+    background-color: #dbcb38;
+    color: #ffffff;
+}
+
+.card-div .intern {
+    background-color: #993344;
+    color: #ffffff;
+}
+
+.team-area .employee-card:hover {
+    transform: scale(1.1);
+    transition: 1s ease-in;
+    z-index: 10;
+}
+
+.team-area .employee-card {
+    transform: scale(1);
+    transition: 1s ease-out;
+    z-index: 0;
+}
